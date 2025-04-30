@@ -1,3 +1,6 @@
+## Oppgave 1 - 3 + ekstraoppgave fullført
+Skrevet alle oppgavene i samme program, og publisert her.
+
 # Kartlegging_Backend_Oppgaver
 Oppgavesett Backend
 
