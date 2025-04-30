@@ -1,0 +1,14 @@
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\bin\Debug\net8.0\Jørgen - oppgavesett april.exe
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\bin\Debug\net8.0\Jørgen - oppgavesett april.deps.json
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\bin\Debug\net8.0\Jørgen - oppgavesett april.runtimeconfig.json
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\bin\Debug\net8.0\Jørgen - oppgavesett april.dll
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\bin\Debug\net8.0\Jørgen - oppgavesett april.pdb
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.AssemblyInfoInputs.cache
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.AssemblyInfo.cs
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.csproj.CoreCompileInputs.cache
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.dll
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\refint\Jørgen - oppgavesett april.dll
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.pdb
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.genruntimeconfig.cache
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\ref\Jørgen - oppgavesett april.dll
