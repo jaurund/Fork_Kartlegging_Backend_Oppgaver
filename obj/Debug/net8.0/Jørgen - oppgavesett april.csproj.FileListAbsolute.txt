@@ -12,3 +12,4 @@ C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgav
 C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.pdb
 C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.genruntimeconfig.cache
 C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\ref\Jørgen - oppgavesett april.dll
+C:\Users\jvsan\OneDrive\Dokumenter\Alt viktig\Kodehode\Oppgaver\Jørgen - oppgavesett april\obj\Debug\net8.0\Jørgen - oppgavesett april.sourcelink.json

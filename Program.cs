@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Globalization;
+using System.Threading;
 
 namespace PersonInfoDataApp;
 
@@ -130,6 +131,7 @@ class DataPrinter
             for (int i = 1; i <= 10; i++)
             {
                 Console.WriteLine(i);
+                Thread.Sleep(200);
             }
         }
 
@@ -220,6 +222,7 @@ class DataPrinter
             {
                 Console.ResetColor();
             }
+            Thread.Sleep(100);
             // her hallusinerte først ChatGPT og mente at Console.WriteLine(output); skulle være inne i en else - statement
         }
 
