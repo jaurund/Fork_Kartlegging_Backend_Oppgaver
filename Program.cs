@@ -9,6 +9,10 @@ namespace PersonInfoDataApp;
 class DataPrinter
 
 {
+    static string navn;
+static int alder;
+static string alderKategori;
+static int høyde;
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -63,19 +67,9 @@ class DataPrinter
         Console.WriteLine();
     }
 
-    // Få input fra konsoll
-    static void LagreOgSkrivPersonInfo()
-    {
-        Console.Clear();
-        string navn = "";
-        int alder = 0;
-        int høyde = 0;
-        string alderKategori = "";
-
-        while (true)
+    // INPUT NAVN
+    static void HentNavn()
         {
-
-            // INPUT NAVN
             Console.Write("Ditt navn: ");
             navn = Console.ReadLine();
 
@@ -85,8 +79,11 @@ class DataPrinter
                 Console.WriteLine("Glemte du å skrive inn en verdi? \nSkriv navnet ditt: ");
                 navn = Console.ReadLine();
             }
+        }
 
-            // INPUT ALDER
+        // INPUT ALDER
+            static void HentAlder()
+            {
             Console.Write("Din alder: ");
             string alderInput = Console.ReadLine();
             while (!int.TryParse(alderInput, out alder))
@@ -94,7 +91,6 @@ class DataPrinter
                 Console.WriteLine("Du må skrive alderen din med bare tall, uten bokstaver, spesialtegn eller tomme felt. \nPrøv igjen: ");
                 alderInput = Console.ReadLine();
             }
-
             // Oppgave 2: kategorisere alder med if / else
             if (alder >= 0 && alder <= 12) { alderKategori = "barn"; }
             else if (alder >= 13 && alder <= 19) { alderKategori = "ungdom"; }
@@ -103,12 +99,15 @@ class DataPrinter
             else if (alder >= 56 && alder <= 69) { alderKategori = "gammel voksen"; }
             else if (alder >= 70 && alder <= 89) { alderKategori = "bare gammel"; }
             else if (alder >= 90 && alder <= 109) { alderKategori = "veldig gammel"; }
-            else { alderKategori = "du er enten et mirakel, eller bare veldig, veldig død"; }
+            else alderKategori = "du er enten et mirakel, eller bare veldig, veldig død";
+            }
 
-            // INPUT HØYDE
-            while (true)
+            static void HentHøyde()
             {
-                Console.Write("Din høyde i cm (kun tall): ");
+                while (true)
+                {
+                
+                Console.Write("Din høyde i cm (kun hele tall): ");
                 string høydeInput = Console.ReadLine()?.Replace(".", ",");
 
                 if (double.TryParse(høydeInput, out double parsedHeight) && parsedHeight % 1 == 0)
@@ -117,9 +116,21 @@ class DataPrinter
                     break;
                 }
                 Console.WriteLine("Ugyldig høyde. Du må skrive et helt tall uten desimaler.");
+
+            }
             }
 
-            double høydeIMeter = høyde / 100.0;
+
+    // Få input fra konsoll
+    static void LagreOgSkrivPersonInfo()
+    {
+        Console.Clear();
+
+        HentNavn;
+        HentAlder;
+        HentHøyde;
+
+        double høydeIMeter = høyde / 100.0;
 
 
             // BEKREFT INFORMASJON
@@ -136,53 +147,69 @@ class DataPrinter
                 TypeWriter("Supert! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
                 PrintNumbers();
                 RunFizzBuzz();
-                break;
+                return;
             }
 
             else if (svar == "n" || svar == "no")
             {
-                Console.WriteLine("\nHvilket felt vil du endre?");
-                Console.WriteLine("1. Navn\n2. Alder\n3. Høyde\nx Avbryt og gå videre");
-                string feltvalg = Console.ReadLine();
-
-                if (feltvalg == "x")
+                while (true)
                 {
-                    Console.WriteLine("OK, vi bruker den opprinnelige informasjonen.");
-                    break;
-                    // mulig må hive inn Printnumbers og Fizzbuzz her
-                }
+                    Console.WriteLine("\nHvilket felt vil du endre?");
+                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde\nx Avbryt og gå videre");
+                    string feltvalg = Console.ReadLine();
 
-                // ENDRE BRUKERINPUT
-                switch (feltvalg)
-                {
-                    case "1":
-                        Console.Write("Nytt navn: ");
-                        navn = Console.ReadLine();
+                    if (feltvalg == "x")
+                    {
+                        Console.WriteLine("OK, vi bruker den opprinnelige informasjonen.");
                         break;
-                    case "2":
-                        Console.Write("Ny alder: ");
-                        string nyAlder = Console.ReadLine();
-                        while (!int.TryParse(nyAlder, out alder))
-                        {
-                            Console.WriteLine("Ugyldig alder. Prøv igjen: ");
-                            nyAlder = Console.ReadLine();
-                        }
-                        break;
-                    case "3":
-                        while (true)
-                            Console.Write("Ny høyde i cm: ");
-                        string nyHøyde = Console.ReadLine()?.Replace(".", ",");
+                        // mulig må hive inn Printnumbers og Fizzbuzz her
+                    }
 
-                        if (double.TryParse(nyHøyde, out double parsedHeight) && parsedHeight % 1 == 0)
-                        {
-                            høyde = (int)parsedHeight;
+                    // ENDRE BRUKERINPUT
+                    switch (feltvalg)
+                    {
+                        case "1":
+                            Console.Write("Nytt navn: ");
+                            navn = Console.ReadLine();
                             break;
+                        case "2":
+                            Console.Write("Ny alder: ");
+                            string nyAlder = Console.ReadLine();
+                            while (!int.TryParse(nyAlder, out alder))
+                            {
+                                Console.WriteLine("Ugyldig alder. Prøv igjen: ");
+                                nyAlder = Console.ReadLine();
+                            }
+                            {
+                                if (alder >= 0 && alder <= 12) alderKategori = "barn";
+                                else if (alder >= 13 && alder <= 19) alderKategori = "ungdom";
+                                else if (alder >= 20 && alder <= 34) alderKategori = "ung voksen";
+                                else if (alder >= 35 && alder <= 55) alderKategori = "voksen";
+                                else if (alder >= 56 && alder <= 69) alderKategori = "gammel voksen";
+                                else if (alder >= 70 && alder <= 89) alderKategori = "bare gammel";
+                                else if (alder >= 90 && alder <= 109) alderKategori = "veldig gammel";
+                                else alderKategori = "du er enten et mirakel, eller bare veldig, veldig død";
+                            }
+                            break;
+
+                        case "3":
+                        {
+                            while(true)
+                            Console.Write("Ny høyde i cm: ");
+                            string nyHøyde = Console.ReadLine()?.Replace(".", ",");
+
+                            if (double.TryParse(nyHøyde, out double parsedHeight) && parsedHeight % 1 == 0)
+                            {
+                                høyde = (int)parsedHeight;
+                                break;
+                            }
+                            Console.WriteLine("Ugyldig høyde. Du må skrive et helt tall uten desimaler.");
                         }
-                        Console.WriteLine("Ugyldig høyde. Du må skrive et helt tall uten desimaler.");
-               }
-                    break;
-                    Console.WriteLine("Ugyldig valg, prøver igjen.");
-                    break;
+                }
+                        
+                        Console.WriteLine("Ugyldig valg, prøv igjen.");
+                        
+                }
             }
         
 
@@ -191,6 +218,7 @@ class DataPrinter
                     Console.WriteLine("Om du ikke en gang greier å inputte riktig informasjon her, får du ikke være med på leken. Programmet avsluttes.");
                     return;
                 }
+                
             }
 
             // Oppgave 3: skrive tall fra 1-10
