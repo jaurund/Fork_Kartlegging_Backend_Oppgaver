@@ -10,9 +10,9 @@ class DataPrinter
 
 {
     static string navn;
-static int alder;
-static string alderKategori;
-static int høyde;
+    static int alder;
+    static string alderKategori;
+    static int høyde;
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -84,24 +84,30 @@ static int høyde;
         // INPUT ALDER
             static void HentAlder()
             {
-            Console.Write("Din alder: ");
-            string alderInput = Console.ReadLine();
-            while (!int.TryParse(alderInput, out alder))
-            {
-                Console.WriteLine("Du må skrive alderen din med bare tall, uten bokstaver, spesialtegn eller tomme felt. \nPrøv igjen: ");
-                alderInput = Console.ReadLine();
-            }
+                Console.Write("Din alder: ");
+                string alderInput = Console.ReadLine();
+                while (!int.TryParse(alderInput, out alder))
+                {
+                    Console.WriteLine("Du må skrive alderen din med bare tall, uten bokstaver, spesialtegn eller tomme felt. \nPrøv igjen: ");
+                    alderInput = Console.ReadLine();
+                    
+                }
+                KategoriserAlder(alder);
             // Oppgave 2: kategorisere alder med if / else
-            if (alder >= 0 && alder <= 12) { alderKategori = "barn"; }
-            else if (alder >= 13 && alder <= 19) { alderKategori = "ungdom"; }
-            else if (alder >= 20 && alder <= 34) { alderKategori = "ung voksen"; }
-            else if (alder >= 35 && alder <= 55) { alderKategori = "voksen"; }
-            else if (alder >= 56 && alder <= 69) { alderKategori = "gammel voksen"; }
-            else if (alder >= 70 && alder <= 89) { alderKategori = "bare gammel"; }
-            else if (alder >= 90 && alder <= 109) { alderKategori = "veldig gammel"; }
-            else alderKategori = "du er enten et mirakel, eller bare veldig, veldig død";
             }
 
+            static string KategoriserAlder(int alder)
+            {
+                if (alder <= 12) { alderKategori = "barn"; }
+            else if (alder <= 19) { alderKategori = "ungdom"; }
+            else if (alder <= 34) { alderKategori = "ung voksen"; }
+            else if (alder <= 55) { alderKategori = "voksen"; }
+            else if (alder <= 69) { alderKategori = "gammel voksen"; }
+            else if (alder <= 89) { alderKategori = "bare gammel"; }
+            else if (alder <= 109) { alderKategori = "veldig gammel"; }
+            else if (alder >= 110) { alderKategori = "du er enten et mirakel, eller bare veldig, veldig død"; }
+            return alderKategori;
+            }
             static void HentHøyde()
             {
                 while (true)
@@ -110,15 +116,13 @@ static int høyde;
                 Console.Write("Din høyde i cm (kun hele tall): ");
                 string høydeInput = Console.ReadLine()?.Replace(".", ",");
 
-                if (double.TryParse(høydeInput, out double parsedHeight) && parsedHeight % 1 == 0)
-                {
-                    høyde = (int)parsedHeight;
+                if (int.TryParse(høydeInput, out høyde))
                     break;
-                }
+                
                 Console.WriteLine("Ugyldig høyde. Du må skrive et helt tall uten desimaler.");
 
             }
-            }
+        }
 
 
     // Få input fra konsoll
@@ -126,9 +130,9 @@ static int høyde;
     {
         Console.Clear();
 
-        HentNavn;
-        HentAlder;
-        HentHøyde;
+        HentNavn();
+        HentAlder();
+        HentHøyde();
 
         double høydeIMeter = høyde / 100.0;
 
@@ -152,64 +156,40 @@ static int høyde;
 
             else if (svar == "n" || svar == "no")
             {
+                bool harEndret = false;
+
                 while (true)
                 {
-                    Console.WriteLine("\nHvilket felt vil du endre?");
-                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde\nx Avbryt og gå videre");
+                    Console.WriteLine(harEndret ? "\nVil du endre noe mer?" : "\nHvilket felt vil du endre?");
+                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde\nx Fortsett uten endring");
                     string feltvalg = Console.ReadLine();
 
                     if (feltvalg == "x")
                     {
-                        Console.WriteLine("OK, vi bruker den opprinnelige informasjonen.");
+                        TypeWriter("Det er i orden! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
                         break;
-                        // mulig må hive inn Printnumbers og Fizzbuzz her
                     }
-
-                    // ENDRE BRUKERINPUT
                     switch (feltvalg)
                     {
                         case "1":
-                            Console.Write("Nytt navn: ");
-                            navn = Console.ReadLine();
+                            HentNavn();
                             break;
                         case "2":
-                            Console.Write("Ny alder: ");
-                            string nyAlder = Console.ReadLine();
-                            while (!int.TryParse(nyAlder, out alder))
-                            {
-                                Console.WriteLine("Ugyldig alder. Prøv igjen: ");
-                                nyAlder = Console.ReadLine();
-                            }
-                            {
-                                if (alder >= 0 && alder <= 12) alderKategori = "barn";
-                                else if (alder >= 13 && alder <= 19) alderKategori = "ungdom";
-                                else if (alder >= 20 && alder <= 34) alderKategori = "ung voksen";
-                                else if (alder >= 35 && alder <= 55) alderKategori = "voksen";
-                                else if (alder >= 56 && alder <= 69) alderKategori = "gammel voksen";
-                                else if (alder >= 70 && alder <= 89) alderKategori = "bare gammel";
-                                else if (alder >= 90 && alder <= 109) alderKategori = "veldig gammel";
-                                else alderKategori = "du er enten et mirakel, eller bare veldig, veldig død";
-                            }
+                            HentAlder();
                             break;
-
                         case "3":
-                        {
-                            while(true)
-                            Console.Write("Ny høyde i cm: ");
-                            string nyHøyde = Console.ReadLine()?.Replace(".", ",");
-
-                            if (double.TryParse(nyHøyde, out double parsedHeight) && parsedHeight % 1 == 0)
-                            {
-                                høyde = (int)parsedHeight;
-                                break;
-                            }
-                            Console.WriteLine("Ugyldig høyde. Du må skrive et helt tall uten desimaler.");
-                        }
+                            HentHøyde();
+                            break;
+                        default:
+                            Console.WriteLine("Ugyldig valg, prøv igjen");
+                            break;
+                    }
+                    
                 }
-                        
-                        Console.WriteLine("Ugyldig valg, prøv igjen.");
-                        
-                }
+                
+                TypeWriter("Takk for oppdateringen! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
+                PrintNumbers();
+                RunFizzBuzz();
             }
         
 
@@ -230,8 +210,8 @@ static int høyde;
                 ConsoleColor[] colors = (ConsoleColor[])Enum.GetValues(typeof(ConsoleColor));
 
                 for (int i = 1; i <= 10; i++)
+                // Kjører igjennom tilfeldige farger på tall
                 {
-                    // Kjører igjennom tilfeldige farger på tall
                     ConsoleColor color;
                     do
                     {
@@ -270,34 +250,6 @@ static int høyde;
                 Thread.Sleep(500);
             }
 
-
-
-            // valgt å la dette bli for å vise arbeidsrekkefølgen, men skrevet programmet på nytt under
-
-            /* static void RunFizzBuzz()
-
-            {
-            for (int i = 1; i<= 100; i++)
-            {
-                if (i % 3 == 0 && i % 5 == 0)  
-
-                {
-                    Console.WriteLine("FizzBuzz");
-                }
-                else if (i % 3 == 0)
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else if (i % 5 == 0)
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
-
-            }*/
 
             static void RunFizzBuzz()
             {
@@ -340,40 +292,4 @@ static int høyde;
                 Console.WriteLine("\n--- TAKK FOR ALT ---");
 
             }
-
-            // etter jeg var ferdig med å gi farge til tall osv, sier ChatGPT plutselig at dette var en mye mer effektiv måte å skrive det på.
-            // hadde uansett ikke lært mer om if true / false statements om jeg hadde gjort det slik fra begynnelsen
-
-            /*static void RunFizzBuzz()
-            {
-                for (int i = 1; i <= 100; i++)
-                {
-                    string output = $"{i}";
-
-                    if (i % 3 == 0 && i % 5 == 0)  
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        output += " FizzBuzz";
-                    }
-                    else if (i % 3 == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        output += " Fizz";
-                    }
-                    else if (i % 5 == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        output += " Buzz";
-                    }
-
-                    Console.WriteLine(output); // Print output
-
-                    // Reset color after printing, regardless of the condition
-                    Console.ResetColor(); 
-                }*/
         }
-}
-
-
-
-
