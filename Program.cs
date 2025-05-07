@@ -138,19 +138,23 @@ class DataPrinter
 
 
             // BEKREFT INFORMASJON
-            Console.WriteLine("\n~~~ Din informasjon: ~~~");
-            Console.WriteLine($"Navn: {navn}");
-            Console.WriteLine($"Alder: {alder} ({alderKategori})");
-            Console.WriteLine($"Høyde: {høydeIMeter:F2} m");
-            Console.WriteLine("\nEr dette korrekt informasjon?");
-            Console.WriteLine("y/n");
+            void SkrivBekreftetInfo()
+            {
+                Console.WriteLine("\n~~~ Din informasjon: ~~~");
+                Console.WriteLine($"Navn: {navn}");
+                Console.WriteLine($"Alder: {alder} ({alderKategori})");
+                Console.WriteLine($"Høyde: {høydeIMeter} m");               
+            }
+                Console.WriteLine("\nEr dette korrekt informasjon?");
+                Console.WriteLine("y/n");
+
+            SkrivBekreftetInfo();
 
             string svar = Console.ReadLine()?.ToLower();
             if (svar == "y" || svar == "yes")
             {
-                TypeWriter("Supert! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
-                PrintNumbers();
-                RunFizzBuzz();
+                TypeWriter("Supert!");
+                KjørFizzBuzzDel();
                 return;
             }
 
@@ -160,36 +164,53 @@ class DataPrinter
 
                 while (true)
                 {
-                    Console.WriteLine(harEndret ? "\nVil du endre noe mer?" : "\nHvilket felt vil du endre?");
-                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde\nx Fortsett uten endring");
+                    string endretMelding = harEndret ? "\nVil du endre noe mer?" : "\nHvilket felt vil du endre?";
+                    Console.WriteLine(endretMelding);
+                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde");
+
+                    // dynamisk x-melding
+                    string xChoiceMessage = harEndret ? "x Fortsett med oppdaterte endringer" : "x Fortsett uten endring";
+                    Console.WriteLine(xChoiceMessage);
+
                     string feltvalg = Console.ReadLine();
 
-                    if (feltvalg == "x")
+                    if (feltvalg == "x")                    
                     {
-                        TypeWriter("Det er i orden! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
-                        break;
+                        if (harEndret)
+                        {
+                            SkrivBekreftetInfo();
+                            TypeWriter("Takk for oppdateringen");
+                        }
+                        else
+                        {
+                            TypeWriter("Det er i orden!");
+                        }
+                        KjørFizzBuzzDel();
+                        return;
                     }
+
                     switch (feltvalg)
                     {
                         case "1":
                             HentNavn();
+                            harEndret = true;
                             break;
                         case "2":
                             HentAlder();
+                            harEndret = true;
                             break;
                         case "3":
                             HentHøyde();
+                            harEndret = true;
                             break;
                         default:
                             Console.WriteLine("Ugyldig valg, prøv igjen");
                             break;
                     }
-                    
-                }
-                
-                TypeWriter("Takk for oppdateringen! Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
-                PrintNumbers();
-                RunFizzBuzz();
+                    høydeIMeter = høyde / 100.0;
+
+                    SkrivBekreftetInfo();                   
+                }              
             }
         
 
@@ -200,6 +221,7 @@ class DataPrinter
                 }
                 
             }
+
 
             // Oppgave 3: skrive tall fra 1-10
             static void PrintNumbers()
@@ -292,4 +314,11 @@ class DataPrinter
                 Console.WriteLine("\n--- TAKK FOR ALT ---");
 
             }
+
+            static void KjørFizzBuzzDel()
+                {
+                    TypeWriter("Da går vi videre til å skrive ut en tallrekke fra 1-10, før vi skal kjøre .... <slow>(trommevirvel)</slow> FizzBuzz!");
+                    PrintNumbers();
+                    RunFizzBuzz();
+                }
         }
