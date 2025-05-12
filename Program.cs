@@ -141,9 +141,9 @@ class DataPrinter
             void SkrivBekreftetInfo()
             {
                 Console.WriteLine("\n~~~ Din informasjon: ~~~");
-                Console.WriteLine($"Navn: {navn}");
-                Console.WriteLine($"Alder: {alder} ({alderKategori})");
-                Console.WriteLine($"Høyde: {høydeIMeter} m");               
+                Console.WriteLine($"Navn:\t{navn}");
+                Console.WriteLine($"Alder:\t{alder} ({alderKategori})");
+                Console.WriteLine($"Høyde:\t{høydeIMeter} m");               
             }
                 Console.WriteLine("\nEr dette korrekt informasjon?");
                 Console.WriteLine("y/n");
@@ -166,7 +166,7 @@ class DataPrinter
                 {
                     string endretMelding = harEndret ? "\nVil du endre noe mer?" : "\nHvilket felt vil du endre?";
                     Console.WriteLine(endretMelding);
-                    Console.WriteLine("1. Navn\n2. Alder\n3. Høyde");
+                    Console.WriteLine("1.\tNavn\n2.\tAlder\n3. \tHøyde");
 
                     // dynamisk x-melding
                     string xChoiceMessage = harEndret ? "x Fortsett med oppdaterte endringer" : "x Fortsett uten endring";
@@ -284,21 +284,21 @@ class DataPrinter
                     if (i % 3 == 0 && i % 5 == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        output += " FizzBuzz";
+                        output += "\tFizzBuzz";
                         isFizzOrBuzz = true;
                     }
 
                     else if (i % 3 == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        output += " Fizz";
+                        output += "\tFizz";
                         isFizzOrBuzz = true;
                     }
 
                     else if (i % 5 == 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        output += " Buzz";
+                        output += "\tBuzz";
                         isFizzOrBuzz = true;
                     }
                     Console.WriteLine(output);
